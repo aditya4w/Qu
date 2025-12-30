@@ -19,12 +19,15 @@ class StorageManager:
                         return 
             except:
                 pass
-
+   
+        print("----------------------------")
         print("=== Qu Needs Storage Permission For Work >w< ===")
         print("~ Where Should Qu Store Your Data? ~")
         print("1. System (In Home Folder) - Recommended")
         print("2. Local (This folder)")
         
+        print("----------------------------")
+
         choice = input("Select (1/2): ")
 
         if choice == "1":
@@ -33,8 +36,10 @@ class StorageManager:
             
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
+                print("----------------------------")
                 print(f"Success! at {folder_path}")
             else:
+                print("----------------------------")
                 print("Unexpected Error!")
             
             self.filepath = os.path.join(folder_path, self.filename)
@@ -51,10 +56,11 @@ class StorageManager:
         with open(self.config_file, "w") as f:
             json.dump({"path": self.filepath}, f)
         print("~ Setup Complete! ~")
-
+        print("----------------------------")
 
     def get_path(self):
         return self.filepath
+print("----------------------------")
 
 print ("~ HELLO THERE! I\'M QU >w< ~")
 
@@ -76,6 +82,7 @@ class ExpenseManager:
        self.load_expenses()
 
     def add_expenses(self):
+        print("----------------------------")
         category = input("Enter Category [ex Food, Travel.,etc]: ")
         amount = input("Enter Amount: ")
 
@@ -86,7 +93,9 @@ class ExpenseManager:
         new_obj = Expense(category, amount, d_input)
         self.expenses.append(new_obj)
         self.save_expenses()
+        print("----------------------------")
         print("~ Saved! ~")
+        print("----------------------------")
 
     def save_expenses(self):
         temp_list = []
@@ -130,14 +139,17 @@ while True:
   print("1. Add Expense")
   print("2. Summary")
   print("3. Exit")
-
+  print("----------------------------")
   choice = int(input(": "))
   if choice == 1:
     app.add_expenses()
   elif choice == 2:
+    print("----------------------------")
     app.smry_expenses()
   elif choice == 3:
+    print("----------------------------")
     print("BYE BYE! ^_^")
     break
   else:
+      print("----------------------------")
       print("Invalid choice, try again!")
